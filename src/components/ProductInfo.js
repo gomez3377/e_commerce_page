@@ -24,7 +24,7 @@ const ProductInfo = () => {
           <p className="product-quanity">0</p>
           <button className="add-btn">+</button>
       </div>
-      <button className="add-to-cart-btn"> <img src={shoppingCart} alt="shopping-cart" /> Add to Cart</button>
+      <button className="add-to-cart-btn"> <i className="shopping-cart"></i> Add to Cart</button>
       </div>
     </section>
   );
