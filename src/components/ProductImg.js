@@ -38,7 +38,7 @@ const ProductImg = () => {
    
     ])
 
-    const [currentProductImg, setCurrentProductImg] = React.useState(productImg1)
+    const [currentProductImg, setCurrentProductImg] = React.useState(findCurrentImg)
 
     function changeProductImg(currentId){
         setProductImages(prevImgData => prevImgData.map(img => {
@@ -47,9 +47,26 @@ const ProductImg = () => {
             : {...img, currentlyDisplayed: false}
         }
             ))
+        setCurrentProductImg(findCurrentImg())
+
     }
 
-    const thumbnailImgs = productImages.map(img => <li key={img.id}><button className='thumbnail-img' onClick={() => changeProductImg(img.id)}><img src={img.thumbnailImg} /></button></li>)
+    function findCurrentImg() {
+        const [currentImg] = productImages.filter(img => img.currentlyDisplayed)
+
+        const { img } = currentImg
+        return img
+    }
+
+
+    const thumbnailImgs = productImages.map(img => <li key={img.id}>
+        <button className='thumbnail-img' 
+        onClick={() => changeProductImg(img.id)}>
+            <img src={img.thumbnailImg} 
+            className={img.currentlyDisplayed ?'active' : ''} />
+            </button>
+            </li>
+            )
   return (
     <div className='product-display-img'>
         <div className="product-img">

@@ -1,7 +1,12 @@
 import React from 'react'
 import shoppingCart from '../assets/images/icon-cart.svg'
 import avatar from '../assets/images/image-avatar.png'
+import ShoppingCartIcon from './ShoppingCartIcon'
+import ShoppingCartModal from './ShoppingCartModal'
 const Header = () => {
+  const [modalShow, setModalShow] = React.useState(false)
+
+
   return (
     <header>
         <div className='left-header'>
@@ -17,9 +22,12 @@ const Header = () => {
         </nav>
         </div>
        <div className='right-header'>
+        <button onClick={() => setModalShow(!modalShow)} className='shopping-cart-btn'>
+        <ShoppingCartIcon fillValue={"hsl(219, 9%, 45%)"} />
 
-        <img src={shoppingCart} alt="shopping-cart" />
-        <img src={avatar} alt="shopping-cart" />
+        </button>
+        <ShoppingCartModal modalShow={modalShow}/>
+        <img className='avatar' src={avatar} alt="shopping-cart" />
        </div>
 
     </header>

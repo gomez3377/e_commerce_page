@@ -1,7 +1,18 @@
 import React from "react";
-import shoppingCart from '../assets/images/icon-cart.svg'
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 const ProductInfo = () => {
+  const [count, setCount] = React.useState(0)
+
+  function subtractProductAmount() {
+    
+    count > 0 && setCount(prevCount => prevCount -1)
+  }
+
+  function addProductAmount() {
+    count < 99 && setCount(prevCount => prevCount +1)
+  }
+
   return (
     <section className="product-info">
       <h3 className="company-name">Sneaker Company</h3>
@@ -20,11 +31,14 @@ const ProductInfo = () => {
       <div className="quanity-and-add-to-cart-container">
 
       <div className="quantity-container">
-          <button className="minus-btn">-</button>
-          <p className="product-quanity">0</p>
-          <button className="add-btn">+</button>
+          <button onClick={subtractProductAmount} className="minus-btn">-</button>
+          <p className="product-quanity">{count}</p>
+          <button onClick={addProductAmount} className="add-btn">+</button>
       </div>
-      <button className="add-to-cart-btn"> <i className="shopping-cart"></i> Add to Cart</button>
+      <button className="add-to-cart-btn"> <ShoppingCartIcon 
+      fillValue={"white"}/> 
+      <p> Add to Cart</p>
+      </button>
       </div>
     </section>
   );
