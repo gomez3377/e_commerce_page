@@ -10,7 +10,7 @@ import productThumbnailImg4 from '../assets/images/image-product-4-thumbnail.jpg
 const Lightbox = () => {
   return (
     <div className='modal' id='lightbox'>
-        <span className='close'></span>
+        <span className='close' onClick={() => closeLightbox()}></span>
         </div>
 
   )
